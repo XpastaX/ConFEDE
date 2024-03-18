@@ -71,7 +71,7 @@ def Vtrain(exp_type=None, load_model=None, check=None, config=default_config):
 
         result, result_loss = eval(model, metrics, valid_data, device, config)
 
-        log = 'visionPretarin_TrainAcc\n\tEpoch:%d\n\tacc_2:%s\n\tF1_score:%s\n\tacc_3"%s\n\t' \
+        log = 'visionPretarin_ValidAcc\n\tEpoch:%d\n\tacc_2:%s\n\tF1_score:%s\n\tacc_3"%s\n\t' \
               'acc_5:%s\n\tMAE:%s\n\tCorr:%s\n\tLoss:%s\n' \
               '------------------------------------------' % (
                   epoch, result['Mult_acc_2'], result['F1_score'], result['Mult_acc_3'], result['Mult_acc_5'],
