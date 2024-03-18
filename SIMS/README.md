@@ -1,4 +1,4 @@
-Creat following folders
+# Creat following folders
 ckpt/
 # your BERT model
 ckpt/bert/
