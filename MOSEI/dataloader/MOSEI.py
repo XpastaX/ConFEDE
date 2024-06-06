@@ -164,16 +164,16 @@ class MOSEIDataset(Dataset):
             for j in range(int(self.size / 10)):
                 if i == j: continue
                 if _label[i] == _label[int(_rank[i][j])]:
-                    _ss.append(j)
+                    _ss.append(int(_rank[i][j]))
                 else:
-                    _sd.append(j)
+                    _sd.append(int(_rank[i][j]))
             for j in range(-1, -int(self.size / 10), -1):
                 if i == j: continue
                 if _label[i] == _label[int(_rank[i][j])]:
                     continue
-                    # _ds.append(j)
+                    # _ds.append(int(_rank[i][j]))
                 else:
-                    _dd.append(j)
+                    _dd.append(int(_rank[i][j]))
             if len(_ss) < 2 or len(_sd) < 2 or len(_dd) < 2:
                 print('Unique sample detected, may cause error!')
 
