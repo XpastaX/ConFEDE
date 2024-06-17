@@ -10,6 +10,68 @@ LOGPATH = 'log/'
 check_dir(LOGPATH)
 USEROBERTA = False
 
+positive_pairs = [
+    # inter-sample pairing
+    'T0s,T1s',
+    'T0s,T2s',
+    'V0s,V1s',
+    'V0s,V2s',
+    'A0s,A1s',
+    'A0s,A2s',
+    # intra-sample pairing
+    'T0s,V0s',
+    'T0s,A0s',
+    'T1s,V1s',
+    'T1s,A1s',
+    'T2s,V2s',
+    'T2s,A2s',
+    'T3s,V3s',
+    'T3s,A3s',
+    'T4s,V4s',
+    'T4s,A4s',
+    'T5s,V5s',
+    'T5s,A5s',
+    'T6s,V6s',
+    'T6s,A6s',
+]
+negative_pairs = [
+    # inter-sample pairing
+    'T0s,T3s',
+    'T0s,T4s',
+    'T0s,T5s',
+    'T0s,T6s',
+    'V0s,V3s',
+    'V0s,V4s',
+    'V0s,V5s',
+    'V0s,V6s',
+    'A0s,A3s',
+    'A0s,A4s',
+    'A0s,A5s',
+    'A0s,A6s',
+    # intra-sample pairing
+    'T0s,T0d',
+    'T0s,V0d',
+    'T0s,A0d',
+    'T1s,T1d',
+    'T1s,V1d',
+    'T1s,A1d',
+    'T2s,T2d',
+    'T2s,V2d',
+    'T2s,A2d',
+    'T3s,T3d',
+    'T3s,V3d',
+    'T3s,A3d',
+    'T4s,T4d',
+    'T4s,V4d',
+    'T4s,A4d',
+    'T5s,T5d',
+    'T5s,V5d',
+    'T5s,A5d',
+    'T6s,T6d',
+    'T6s,V6d',
+    'T6s,A6d',
+]
+
 
 class SIMS:
     class path:
