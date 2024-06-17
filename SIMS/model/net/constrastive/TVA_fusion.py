@@ -150,9 +150,9 @@ class TVA_fusion(nn.Module):
             sup_const_loss = 0
             # sds_loss = 0
             if sample2 is not None:
-                # For sequence [Ts, Vs, As, Td, Vd, Ad, T1s, V1s, ...... V6d, A6d], construct corresponding positive and negative embedding pairs, which is use for contrastive learning later.
-                t1, p, t2, n = torch.tensor([0, 0, 7, 7, 14, 14,  # TsT1sT2s vsv1sV2s AsA1sA2s
-                                             0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6],  # Ts Vs As 0-6
+                # For sequence [Ts,T1s,T2s...T6s, Vs,V1s.....,As,A1s,...], construct corresponding positive and negative embedding pairs, which is use for contrastive learning later.
+                t1, p, t2, n = torch.tensor([0, 0, 7, 7, 14, 14, 
+                                             0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6], 
                                             device=device), \
                                torch.tensor([1, 2, 8, 9, 15, 16,
                                              7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20],
