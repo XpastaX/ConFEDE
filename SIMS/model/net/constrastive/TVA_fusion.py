@@ -151,20 +151,18 @@ class TVA_fusion(nn.Module):
             # sds_loss = 0
             if sample2 is not None:
                 # For sequence [Ts,T1s,T2s...T6s, Vs,V1s.....,As,A1s,...], construct corresponding positive and negative embedding pairs, which is use for contrastive learning later.
-                t1, p, t2, n = torch.tensor([0, 0, 7, 7, 14, 14, 
-                                             0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6], 
+                # the indexes are pre-calculated in config.py
+                t1, p, t2, n = torch.tensor(self.config.t1, 
                                             device=device), \
-                               torch.tensor([1, 2, 8, 9, 15, 16,
-                                             7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20],
+                               torch.tensor(self.config.p,
                                             device=device), \
-                               torch.tensor([0, 0, 0, 0, 7, 7, 7, 7, 14, 14, 14, 14,
-                                             0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6],
+                               torch.tensor(self.config.t2,
                                             device=device), \
-                               torch.tensor([3, 4, 5, 6, 10, 11, 12, 13, 17, 18, 19, 20,
-                                             21, 28, 35, 22, 29, 36, 23, 30, 37, 24, 31, 38, 25, 32, 39, 26, 33, 40, 27,
-                                             34, 41], device=device)
+                               torch.tensor(self.config.n, 
+                                            device=device)
 
                 indices_tuple = (t1, p, t2, n)
+
                 pre_sample_label = torch.tensor([0, 0, 0, 1, 2, 3, 4, 0, 0, 0, 1, 2, 3, 4, 0, 0, 0, 1, 2, 3, 4,
                                                  5, 5, 5, 6, 7, 8, 9, 5, 5, 5, 6, 7, 8, 9, 5, 5, 5, 6, 7, 8, 9, ])
                 for i in range(len(x1_all)):
