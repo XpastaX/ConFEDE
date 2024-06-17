@@ -10,6 +10,15 @@ LOGPATH = 'log/'
 check_dir(LOGPATH)
 USEROBERTA = False
 
+# collect positive and negative pairs
+keys = ['T{}s', 'V{}s', 'A{}s', 'T{}d', 'V{}d', 'A{}d']
+num_sample = 7
+all_keys = {}
+idx = 0
+for item in keys:
+    for i in range(num_sample):
+        all_keys[(item.replace('{}', str(i)))] = idx
+        idx += 1
 positive_pairs = [
     # inter-sample pairing
     'T0s,T1s',
@@ -71,6 +80,20 @@ negative_pairs = [
     'T6s,V6d',
     'T6s,A6d',
 ]
+
+t1, p, t2, n = [], [], [], []
+for pair in positive_pairs:
+    eA, eB = pair.split(',')
+    eA_idx = all_keys[eA]
+    eB_idx = all_keys[eB]
+    t1.append(eA_idx)
+    p.append(eB_idx)
+for pair in negative_pairs:
+    eA, eB = pair.split(',')
+    eA_idx = all_keys[eA]
+    eB_idx = all_keys[eB]
+    t2.append(eA_idx)
+    n.append(eB_idx)
 
 
 class SIMS:
@@ -146,3 +169,4 @@ class SIMS:
             decay = 1e-3
             num_warm_up = 1
             finetune_epoch = 200
+
