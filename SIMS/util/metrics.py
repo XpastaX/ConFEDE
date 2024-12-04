@@ -4,7 +4,7 @@ from pytorch_metric_learning.losses.ntxent_loss import NTXentLoss
 from pytorch_metric_learning.utils import common_functions as c_f
 import torch
 
-
+# @Copied from ealier "pytorch-metric-learning" pakage for capability: 
 def get_all_pairs_indices(labels, ref_labels=None):
     """
     Given a tensor of labels, this will return 4 tensors.
@@ -23,7 +23,7 @@ def get_all_pairs_indices(labels, ref_labels=None):
     a2_idx, n_idx = torch.where(diffs)
     return a1_idx, p_idx, a2_idx, n_idx
 
-
+# @Copied from ealier "pytorch-metric-learning" pakage for capability:
 def convert_to_pairs(indices_tuple, labels):
     """
     This returns anchor-positive and anchor-negative indices,
